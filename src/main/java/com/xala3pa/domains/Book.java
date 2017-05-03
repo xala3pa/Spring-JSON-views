@@ -1,12 +1,20 @@
 package com.xala3pa.domains;
 
-public class Book {
-    private String ISBN;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.xala3pa.views.Views;
 
+public class Book {
+    @JsonView(Views.Public.class)
+    private String ISBN;
+    @JsonView(Views.Public.class)
     private String name;
+    @JsonView(Views.Public.class)
     private String author;
+    @JsonView(Views.Internal.class)
     private Integer price;
+    @JsonView(Views.Internal.class)
     private Integer stockUnits;
+    
     public Book(String ISBN, String name, String author, Integer price, Integer stockUnits) {
         this.ISBN = ISBN;
         this.name = name;
