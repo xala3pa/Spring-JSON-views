@@ -24,8 +24,14 @@ public class BookStoreController {
         return bookStoreService.getBook(isbn);
     }
 
+    @JsonView(Views.Internal.class)
+    @RequestMapping(method = RequestMethod.GET, value = "/books/internal/{isbn}")
+    public Book getBookInternalData(@PathVariable String isbn) {
+        return bookStoreService.getBook(isbn);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/books")
-    public Collection<Book> getAllBooks(){
+    public Collection<Book> getAllBooks() {
         return bookStoreService.getAllBooks();
 
     }
